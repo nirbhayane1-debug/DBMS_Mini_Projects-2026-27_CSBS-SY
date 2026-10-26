@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Food Delivery System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>🍔 Food Delivery System</h1>
+  <nav>
+    <button class="tab active" data-tab="order">Order Food</button>
+    <button class="tab" data-tab="orders">Orders</button>
+    <button class="tab" data-tab="customers">Customers</button>
+    <button class="tab" data-tab="dashboard">Dashboard</button>
+  </nav>
+</header>
+
+<main>
+  <!-- ORDER FOOD -->
+  <section id="order" class="panel active">
+    <div class="card">
+      <div class="row">
+        <label>Customer
+          <select id="customerSelect"></select>
+        </label>
+        <label>Restaurant
+          <select id="restaurantSelect"></select>
+        </label>
+        <label>Payment mode
+          <select id="paymentMode">
+            <option>UPI</option><option>Card</option><option>Cash</option><option>Net Banking</option>
+          </select>
+        </label>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Menu</h2>
+      <table>
+        <thead><tr><th>Food</th><th>Price</th><th>Quantity</th></tr></thead>
+        <tbody id="menuBody"></tbody>
+      </table>
+      <div class="total-bar">
+        <strong>Total: <span id="orderTotal">₹0.00</span></strong>
+        <button id="placeOrderBtn">Place Order</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORDERS -->
+  <section id="orders" class="panel">
+    <div class="card">
+      <h2>All Orders</h2>
+      <div class="scroll">
+        <table>
+          <thead><tr>
+            <th>ID</th><th>Date</th><th>Customer</th><th>Restaurant</th><th>Delivery Partner</th>
+            <th>Amount</th><th>Payment</th><th>Status</th><th>Bill</th>
+          </tr></thead>
+          <tbody id="ordersBody"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card" id="billCard" hidden>
+      <h2 id="billTitle"></h2>
+      <table>
+        <thead><tr><th>Item</th><th>Qty</th><th>Price</th><th>Total</th></tr></thead>
+        <tbody id="billBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- CUSTOMERS -->
+  <section id="customers" class="panel">
+    <div class="card">
+      <h2>Add Customer</h2>
+      <div class="row">
+        <input id="cName" placeholder="Name">
+        <input id="cMobile" placeholder="Mobile (10 digits)" maxlength="10">
+        <input id="cEmail" placeholder="Email (optional)">
+        <input id="cAddress" placeholder="Address">
+        <button id="addCustomerBtn">Add</button>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Customers</h2>
+      <table>
+        <thead><tr><th>ID</th><th>Name</th><th>Mobile</th><th>Email</th><th>Address</th></tr></thead>
+        <tbody id="customersBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- DASHBOARD -->
+  <section id="dashboard" class="panel">
+    <div class="stats" id="statCards"></div>
+    <div class="card">
+      <h2>Revenue per Restaurant</h2>
+      <table>
+        <thead><tr><th>Restaurant</th><th>Orders</th><th>Revenue</th></tr></thead>
+        <tbody id="revenueBody"></tbody>
+      </table>
+    </div>
+    <div class="card">
+      <h2>Delivery Partners</h2>
+      <table>
+        <thead><tr><th>Name</th><th>Vehicle</th><th>Rating</th><th>Deliveries</th></tr></thead>
+        <tbody id="partnersBody"></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<div id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>
